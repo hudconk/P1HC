@@ -1,0 +1,2 @@
+# Final Project
+This is a page intended to give the top 25 career leaders for each major stat category (points, rebounds, assits, steals, blocks)  in NBA history, and also provides links to each page from the individual list pages.

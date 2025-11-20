@@ -1,0 +1,227 @@
+
+/* Center page and set max width */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #222;
+}
+
+/* Headings */
+h1 {
+  font-size: 2em;
+  color: #003366;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #004080;
+  margin-top: 20px;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/* Class selector example */
+.highlight {
+  background-color: #e0f7ff;
+  padding: 10px;
+  border-left: 4px solid #007acc;
+  border-radius: 6px;
+}
+
+/* ID selector example */
+#main-video {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Links */
+a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Interactive elements */
+.controls {
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.controls h2 {
+  color: #003366;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #007acc;
+  padding-bottom: 10px;
+}
+
+.controls button {
+  background: #007acc;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 5px 10px 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.controls button:hover {
+  background: #005a9e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.controls button:active {
+  transform: translateY(0);
+}
+
+.controls input {
+  padding: 10px 15px;
+  margin: 5px 10px 5px 0;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  width: 250px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.controls input:focus {
+  outline: none;
+  border-color: #007acc;
+  box-shadow: 0 0 0 3px rgba(0,122,204,0.1);
+}
+
+/* Highlight box for featured stats */
+.highlight-box {
+  transition: all 0.3s ease;
+  padding: 20px;
+  margin: 20px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+}
+
+.highlight-box h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.4em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.highlight-box p {
+  margin: 0;
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+/* Enhanced table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  background: #004080;
+  color: white;
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+th:hover {
+  background: #005a9e;
+}
+
+th:after {
+  content: ' \u2195';
+  opacity: 0.5;
+  font-size: 0.8em;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s ease;
+}
+
+tr:hover {
+  background: #f5f5f5;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .controls {
+    padding: 15px;
+  }
+
+  .controls button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .controls input {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  th, td {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .highlight-box {
+    padding: 15px;
+  }
+}
