@@ -4,22 +4,52 @@
   <meta charset="utf-8">
   <title>NBA Career Assists Leaders</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Highlight selected row */
+    .selected-row {
+      background-color: #ffeaa7 !important;
+      transition: background 0.3s ease;
+    }
+
+    #search-bar {
+      padding: 10px;
+      width: 250px;
+      margin: 10px 0;
+      border: 2px solid #007acc;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 
 <body>
 
 <main>
   <article>
+
     <video id="main-video" src="stocktonast.mp4" controls width="640" height="360"></video>
+
     <h1>Top 25 NBA Career Assists Leaders</h1>
-    <p class="highlight">These are the players who have recorded the most assists in NBA history.</p>
-    <table border="1" cellpadding="5" cellspacing="0">
+
+    <p class="highlight">
+      Assists measure a player's ability to create scoring opportunities and read defenses.
+    </p>
+    <p class="highlight">
+      These players stood out as floor generals, playmakers, and offensive engines for their teams.
+    </p>
+
+    <!-- 🔎 Search Bar -->
+    <input type="text" id="search-bar" placeholder="Search players…">
+
+    <!-- 🎯 Random Player Button -->
+    <button id="random-player" class="controls">Highlight Random Player</button>
+
+    <table id="stat-table">
         <caption>(* indicates active player)</caption>
         <thead>
             <tr>
-                <th>Rank</th>
-                <th>Player</th>
-                <th>Position</th>
+                <th data-col="0">Rank</th>
+                <th data-col="1">Player</th>
+                <th data-col="2">Position</th>
             </tr>
         </thead>
         <tbody>
@@ -50,15 +80,22 @@
             <tr><td>25</td><td>Muggsy Bogues</td><td>PG</td></tr>
         </tbody>
     </table>
+
+    <!-- 📌 Fun Fact Area -->
+    <p class="highlight" id="fun-fact">
+      Fun Fact: John Stockton has nearly 4,000 more assists than any other player in NBA history.
+    </p>
+
   </article>
+
   <section>
     <h2>To jump to other pages</h2>
     <ul>
-        <li><a href="index.html" title="Home Page">Home Page</a></li>
-        <li><a href="pointstat.html" title="Career Points Leaders Page">Career Points Leaders Page</a></li>
-        <li><a href="rebstat.html" title="Career Rebounds Leaders Page">Career Rebounds Leaders Page</a></li>
-        <li><a href="stlstat.html" title="Career Steals Leaders Page">Career Steals Leaders Page</a></li>
-        <li><a href="blkstat.html" title="Career Blocks Leaders Page">Career Blocks Leaders Page</a></li>
+        <li><a href="index.html">Home Page</a></li>
+        <li><a href="pointstat.html">Career Points Leaders Page</a></li>
+        <li><a href="rebstat.html">Career Rebounds Leaders Page</a></li>
+        <li><a href="stlstat.html">Career Steals Leaders Page</a></li>
+        <li><a href="blkstat.html">Career Blocks Leaders Page</a></li>
     </ul>
   </section>
 </main>
@@ -66,6 +103,61 @@
 <footer>
   <p>Created by Hudson | NBA Stats Project</p>
 </footer>
+
+<script>
+/* ========== SEARCH FILTER ========== */
+document.getElementById("search-bar").addEventListener("keyup", function () {
+  const filter = this.value.toLowerCase();
+  const rows = document.querySelectorAll("#stat-table tbody tr");
+
+  rows.forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(filter) ? "" : "none";
+  });
+});
+
+/* ========== SORTING ========== */
+document.querySelectorAll("th").forEach(header => {
+  header.addEventListener("click", () => {
+    const table = document.getElementById("stat-table");
+    const tbody = table.querySelector("tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+    const colIndex = header.getAttribute("data-col");
+
+    const sorted = rows.sort((a, b) => {
+      const A = a.children[colIndex].textContent;
+      const B = b.children[colIndex].textContent;
+
+      return A.localeCompare(B, undefined, { numeric: true });
+    });
+
+    tbody.innerHTML = "";
+    sorted.forEach(r => tbody.appendChild(r));
+  });
+});
+
+/* ========== RANDOM PLAYER HIGHLIGHT ========== */
+document.getElementById("random-player").addEventListener("click", () => {
+  const rows = document.querySelectorAll("#stat-table tbody tr");
+
+  rows.forEach(r => r.classList.remove("selected-row"));
+
+  const randomRow = rows[Math.floor(Math.random() * rows.length)];
+  randomRow.classList.add("selected-row");
+});
+
+/* ========== FUN FACT ROTATION ========== */
+const facts = [
+  "John Stockton led the NBA in assists for nine straight seasons.",
+  "Magic Johnson still holds the record for highest assists per game average.",
+  "Jason Kidd is one of only two players with 12,000+ career assists and 2,500+ steals.",
+  "Chris Paul has the highest assist-to-turnover ratio among top-25 players."
+];
+
+setInterval(() => {
+  const factArea = document.getElementById("fun-fact");
+  factArea.textContent = "Fun Fact: " + facts[Math.floor(Math.random() * facts.length)];
+}, 6000);
+</script>
 
 </body>
 </html>
