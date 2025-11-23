@@ -225,3 +225,25 @@ tr:last-child td {
     padding: 15px;
   }
 }
+/* Dark mode theme */
+.dark-theme {
+  background-color: #1e1e1e;
+  color: #eeeeee;
+}
+
+.dark-theme a {
+  color: #80bfff;
+}
+
+.dark-theme .controls {
+  background: #2b2b2b;
+}
+
+.dark-theme button {
+  background: #444 !important;
+  color: white;
+}
+
+.dark-theme button:hover {
+  background: #666 !important;
+}
