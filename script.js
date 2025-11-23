@@ -4,7 +4,7 @@ const themeBtn = document.getElementById("theme-toggle");
 themeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark-theme");
 
-  // Optional: change text based on mode
+  // Change text based on mode
   if (document.body.classList.contains("dark-theme")) {
     themeBtn.textContent = "Light Mode";
   } else {

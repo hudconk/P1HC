@@ -225,25 +225,64 @@ tr:last-child td {
     padding: 15px;
   }
 }
-/* Dark mode theme */
+/* Dark Mode Theme */
 .dark-theme {
-  background-color: #1e1e1e;
-  color: #eeeeee;
+  background-color: #1f1f1f;
+  color: #e4e4e4;
 }
 
+/* Videos / media */
+.dark-theme #main-video {
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+/* Links */
 .dark-theme a {
-  color: #80bfff;
+  color: #8ab4ff;
 }
 
+/* Controls section */
 .dark-theme .controls {
-  background: #2b2b2b;
+  background: #2c2c2c;
+  box-shadow: 0 2px 4px rgba(255,255,255,0.1);
 }
 
-.dark-theme button {
+/* Buttons */
+.dark-theme .controls button {
   background: #444 !important;
   color: white;
 }
 
-.dark-theme button:hover {
+.dark-theme .controls button:hover {
   background: #666 !important;
+}
+
+/* Highlight boxes */
+.dark-theme .highlight {
+  background-color: #333;
+  border-left-color: #66aaff;
+  color: #ddd;
+}
+
+.dark-theme .highlight-box {
+  background: linear-gradient(135deg, #4a4a7d, #3e3e6b);
+  color: white;
+}
+
+/* Table */
+.dark-theme table {
+  background: #2b2b2b;
+  color: #eee;
+}
+
+.dark-theme th {
+  background: #303f9f;
+}
+
+.dark-theme tr:hover {
+  background: #3a3a3a;
+}
+
+.dark-theme td {
+  border-bottom: 1px solid #555;
 }
