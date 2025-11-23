@@ -41,11 +41,54 @@ const previewBox = document.getElementById("search-preview");
 
 // Player-to-page mapping
 const statPlayers = {
-  "pointstat.html": [...],
-  "rebstat.html": [...],
-  "aststat.html": [...],
-  "stlstat.html": [...],
-  "blkstat.html": [...]
+  "pointstat.html": [
+    "Kareem Abdul-Jabbar","LeBron James","Karl Malone","Kobe Bryant",
+    "Michael Jordan","Dirk Nowitzki","Wilt Chamberlain","Shaquille O'Neal",
+    "Moses Malone","Elvin Hayes","Hakeem Olajuwon","Oscar Robertson",
+    "Kevin Garnett","Tim Duncan","Dominique Wilkins","Paul Pierce",
+    "John Havlicek","Kevin Durant","George Gervin","Allen Iverson",
+    "Carmelo Anthony","Vince Carter","Alex English","Reggie Miller",
+    "James Harden"
+  ],
+
+  "rebstat.html": [
+    "Wilt Chamberlain","Bill Russell","Kareem Abdul-Jabbar","Elvin Hayes",
+    "Moses Malone","Tim Duncan","Karl Malone","Robert Parish",
+    "Kevin Garnett","Dwight Howard","Bob Pettit","Wes Unseld",
+    "Hakeem Olajuwon","Shaquille O'Neal","David Robinson",
+    "Patrick Ewing","Charles Barkley","Artis Gilmore","Dikembe Mutombo",
+    "Pau Gasol","Dennis Rodman","Larry Foust","Zelmo Beaty","Jerry Lucas",
+    "Bill Laimbeer"
+  ],
+
+  "aststat.html": [
+    "John Stockton","Chris Paul","Jason Kidd","LeBron James","Steve Nash",
+    "Mark Jackson","Magic Johnson","Russell Westbrook","Oscar Robertson",
+    "Isiah Thomas","Gary Payton","Andre Miller","James Harden",
+    "Rod Strickland","Rajon Rondo","Maurice Cheeks","Lenny Wilkens",
+    "Terry Porter","Kyle Lowry","Tim Hardaway","Tony Parker","Bob Cousy",
+    "Guy Rodgers","Deron Williams","Muggsy Bogues"
+  ],
+
+  "stlstat.html": [
+    "John Stockton","Jason Kidd","Chris Paul","Michael Jordan",
+    "Gary Payton","Maurice Cheeks","Scottie Pippen","Clyde Drexler",
+    "Hakeem Olajuwon","Alvin Robertson","Karl Malone","Allen Iverson",
+    "Kobe Bryant","Shaquille O’Neal","Mookie Blaylock","LeBron James",
+    "Paul Pierce","Kevin Garnett","Manu Ginóbili","Jimmy Butler",
+    "Russell Westbrook","Kawhi Leonard","Baron Davis","Andre Iguodala",
+    "Jason Terry"
+  ],
+
+  "blkstat.html": [
+    "Hakeem Olajuwon","Dikembe Mutombo","Kareem Abdul-Jabbar","Mark Eaton",
+    "Tim Duncan","David Robinson","Patrick Ewing","Shaquille O’Neal",
+    "Tree Rollins","Robert Parish","Kevin Garnett","Marcus Camby",
+    "Theo Ratliff","Ben Wallace","Rudy Gobert","Alonzo Mourning",
+    "Serge Ibaka","Dwight Howard","Manute Bol","Artis Gilmore",
+    "Shawn Bradley","Bam Adebayo","Anthony Davis","Pau Gasol",
+    "Hassan Whiteside"
+  ]
 };
 
 // Convert entries into a searchable list
