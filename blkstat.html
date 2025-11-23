@@ -4,22 +4,45 @@
   <meta charset="utf-8">
   <title>NBA Career Blocks Leaders</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Highlight selected row */
+    .selected-row {
+      background-color: #ffeaa7 !important;
+      transition: background 0.3s ease;
+    }
+
+    #search-bar {
+      padding: 10px;
+      width: 250px;
+      margin: 10px 0;
+      border: 2px solid #007acc;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 
 <body>
 
 <main>
   <article>
+
     <video id="main-video" src="hakeemblock.mp4" controls width="640" height="360"></video>
+
     <h1>Top 25 NBA Career Blocks Leaders</h1>
-    <p class="highlight">These players are among the most dominant shot blockers in NBA history.</p>
-    <table border="1" cellpadding="5" cellspacing="0">
+
+    <!--Search Bar -->
+    <input type="text" id="search-bar" placeholder="Search players…">
+
+    <!-- Random Player Button -->
+    <button id="random-player" class="controls">Highlight Random Player</button>
+
+    <table id="stat-table">
         <caption>(* indicates active player)</caption>
         <thead>
             <tr>
-                <th>Rank</th>
-                <th>Player</th>
-                <th>Position</th>
+                <th data-col="0">Rank</th>
+                <th data-col="1">Player</th>
+                <th data-col="2">Position</th>
             </tr>
         </thead>
         <tbody>
@@ -50,15 +73,22 @@
             <tr><td>25</td><td>*Anthony Davis</td><td>PF/C</td></tr>
         </tbody>
     </table>
+
+    <!-- 📌 Fun Fact Area -->
+    <p class="highlight" id="fun-fact">
+      Fun Fact: Hakeem Olajuwon is the all-time leader in blocked shots, known for his timing and footwork.
+    </p>
+
   </article>
+
   <section>
     <h2>To jump to other pages</h2>
     <ul>
-        <li><a href="index.html" title="Home Page">Home Page</a></li>
-        <li><a href="pointstat.html" title="Career Points Leaders Page">Career Points Leaders Page</a></li>
-        <li><a href="aststat.html" title="Career Assists Leaders Page">Career Assists Leaders Page</a></li>
-        <li><a href="stlstat.html" title="Career Steals Leaders Page">Career Steals Leaders Page</a></li>
-        <li><a href="rebstat.html" title="Career Rebounds Leaders Page">Career Rebounds Leaders Page</a></li>
+        <li><a href="index.html">Home Page</a></li>
+        <li><a href="pointstat.html">Career Points Leaders Page</a></li>
+        <li><a href="aststat.html">Career Assists Leaders Page</a></li>
+        <li><a href="rebstat.html">Career Rebounds Leaders Page</a></li>
+        <li><a href="stlstat.html">Career Steals Leaders Page</a></li>
     </ul>
   </section>
 </main>
@@ -66,6 +96,61 @@
 <footer>
   <p>Created by Hudson | NBA Stats Project</p>
 </footer>
+
+<script>
+/* ========== SEARCH FILTER ========== */
+document.getElementById("search-bar").addEventListener("keyup", function () {
+  const filter = this.value.toLowerCase();
+  const rows = document.querySelectorAll("#stat-table tbody tr");
+
+  rows.forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(filter) ? "" : "none";
+  });
+});
+
+/* ========== SORTING ========== */
+document.querySelectorAll("th").forEach(header => {
+  header.addEventListener("click", () => {
+    const table = document.getElementById("stat-table");
+    const tbody = table.querySelector("tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+    const colIndex = header.getAttribute("data-col");
+
+    const sorted = rows.sort((a, b) => {
+      const A = a.children[colIndex].textContent;
+      const B = b.children[colIndex].textContent;
+
+      return A.localeCompare(B, undefined, { numeric: true });
+    });
+
+    tbody.innerHTML = "";
+    sorted.forEach(r => tbody.appendChild(r));
+  });
+});
+
+/* ========== RANDOM PLAYER HIGHLIGHT ========== */
+document.getElementById("random-player").addEventListener("click", () => {
+  const rows = document.querySelectorAll("#stat-table tbody tr");
+
+  rows.forEach(r => r.classList.remove("selected-row"));
+
+  const randomRow = rows[Math.floor(Math.random() * rows.length)];
+  randomRow.classList.add("selected-row");
+});
+
+/* ========== FUN FACT ROTATION ========== */
+const facts = [
+  "Hassan Whiteside once had a triple double with blocks, not assists.",
+  "Victor Wembanyama is currently on pace to break the blocks record.",
+  "Ben Wallace (6'9) is the shortest player to lead the league in blocks.",
+  "The league first recognized blocks as a stat in 1973."
+];
+
+setInterval(() => {
+  const factArea = document.getElementById("fun-fact");
+  factArea.textContent = "Fun Fact: " + facts[Math.floor(Math.random() * facts.length)];
+}, 6000);
+</script>
 
 </body>
 </html>
