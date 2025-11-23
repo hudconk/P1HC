@@ -286,3 +286,41 @@ tr:last-child td {
 .dark-theme td {
   border-bottom: 1px solid #555;
 }
+/* Search live preview dropdown */
+.preview-box {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.preview-item {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.preview-item:hover {
+  background: #f0f8ff;
+}
+
+.preview-category {
+  font-size: 0.85em;
+  color: #666;
+}
+
+.preview-player {
+  font-weight: bold;
+  font-size: 1em;
+  color: #003366;
+}
+
+.preview-item:last-child {
+  border-bottom: none;
+}
