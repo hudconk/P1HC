@@ -324,3 +324,11 @@ tr:last-child td {
 .preview-item:last-child {
   border-bottom: none;
 }
+/* Keep table layout even when rows are hidden */
+#stat-table tbody {
+  display: table-row-group;
+}
+
+#stat-table tr.hidden-row {
+  display: none !important;
+}
