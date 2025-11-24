@@ -99,47 +99,93 @@
 
 <script>
 /* ========== SEARCH FILTER ========== */
-// Hide all rows initially
-const allRows = document.querySelectorAll("#stat-table tbody tr");
+/* Elements and rows */
+const allRows = Array.from(document.querySelectorAll("#stat-table tbody tr"));
+
+/* Hide all rows on load */
 allRows.forEach(r => r.style.display = "none");
 
+/* Set to track permanently revealed rows */
+const revealed = new Set();
+
+/* Utility: show or hide a single row (and ensure previous selected-row class persists) */
+function setRowVisible(row, visible) {
+  row.style.display = visible ? "" : "none";
+}
+
+/* Live preview while typing (temporary unless submitted) */
 document.getElementById("search-bar").addEventListener("input", function () {
   const filter = this.value.toLowerCase();
 
   allRows.forEach(row => {
-    const name = row.children[1].textContent.toLowerCase(); // Player name column
-    row.style.display = name.includes(filter) ? "" : "none";
+    const name = row.children[1].textContent.toLowerCase();
+
+    if (revealed.has(row)) {
+      // permanently revealed rows stay visible
+      setRowVisible(row, true);
+    } else {
+      // temporary preview only when filter is non-empty
+      setRowVisible(row, filter !== "" && name.includes(filter));
+    }
   });
 });
 
-/* ========== SORTING ========== */
-document.querySelectorAll("th").forEach(header => {
+/* Submit to permanently reveal matched players */
+document.getElementById("submit-search").addEventListener("click", () => {
+  const filter = document.getElementById("search-bar").value.toLowerCase();
+
+  if (!filter) return; // nothing to submit
+
+  allRows.forEach(row => {
+    const name = row.children[1].textContent.toLowerCase();
+    if (name.includes(filter)) {
+      revealed.add(row);
+      setRowVisible(row, true);
+    }
+  });
+
+  // clear the search box after submit
+  document.getElementById("search-bar").value = "";
+});
+
+/* Show All Players (permanent) */
+document.getElementById("show-all").addEventListener("click", () => {
+  allRows.forEach(row => {
+    revealed.add(row);
+    setRowVisible(row, true);
+  });
+});
+
+/* Sorting (click headers) */
+document.querySelectorAll("#stat-table th").forEach(header => {
   header.addEventListener("click", () => {
-    const table = document.getElementById("stat-table");
-    const tbody = table.querySelector("tbody");
+    const colIndex = parseInt(header.getAttribute("data-col"), 10);
+    const tbody = document.querySelector("#stat-table tbody");
     const rows = Array.from(tbody.querySelectorAll("tr"));
-    const colIndex = header.getAttribute("data-col");
 
     const sorted = rows.sort((a, b) => {
-      const A = a.children[colIndex].textContent;
-      const B = b.children[colIndex].textContent;
-
+      const A = a.children[colIndex].textContent.trim();
+      const B = b.children[colIndex].textContent.trim();
       return A.localeCompare(B, undefined, { numeric: true });
     });
 
+    // append in sorted order
     tbody.innerHTML = "";
     sorted.forEach(r => tbody.appendChild(r));
   });
 });
 
-/* ========== RANDOM PLAYER HIGHLIGHT ========== */
+/* Random visible player highlight */
 document.getElementById("random-player").addEventListener("click", () => {
-  const rows = document.querySelectorAll("#stat-table tbody tr");
+  // remove previous selections
+  allRows.forEach(r => r.classList.remove("selected-row"));
 
-  rows.forEach(r => r.classList.remove("selected-row"));
-
-  const randomRow = rows[Math.floor(Math.random() * rows.length)];
-  randomRow.classList.add("selected-row");
+  // pick from currently visible rows
+  const visible = allRows.filter(r => r.style.display !== "none");
+  if (visible.length === 0) return;
+  const pick = visible[Math.floor(Math.random() * visible.length)];
+  pick.classList.add("selected-row");
+  pick.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
 /* ========== FUN FACT ROTATION ========== */
