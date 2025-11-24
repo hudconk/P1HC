@@ -99,12 +99,16 @@
 
 <script>
 /* ========== SEARCH FILTER ========== */
-document.getElementById("search-bar").addEventListener("keyup", function () {
-  const filter = this.value.toLowerCase();
-  const rows = document.querySelectorAll("#stat-table tbody tr");
+// Hide all rows initially
+const allRows = document.querySelectorAll("#stat-table tbody tr");
+allRows.forEach(r => r.style.display = "none");
 
-  rows.forEach(row => {
-    row.style.display = row.textContent.toLowerCase().includes(filter) ? "" : "none";
+document.getElementById("search-bar").addEventListener("input", function () {
+  const filter = this.value.toLowerCase();
+
+  allRows.forEach(row => {
+    const name = row.children[1].textContent.toLowerCase(); // Player name column
+    row.style.display = name.includes(filter) ? "" : "none";
   });
 });
 
