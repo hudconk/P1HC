@@ -30,9 +30,13 @@
 
     <h1>Top 25 NBA Career Steals Leaders</h1>
 
-    <!--Search Bar -->
-    <input type="text" id="search-bar" placeholder="Search players…">
-    <button id="submit-search" class="controls">Submit</button>
+    <!--Search Bar + Buttons-->
+    <div class="control-row controls">
+      <input type="text" id="search-bar" placeholder="Search players…">
+      <button id="submit-search">Submit</button>
+      <button id="show-all">Show All Players</button>
+      <button id="random-player">Highlight Random Player</button>
+    </div>
 
     <!-- Random Player Button -->
     <button id="random-player" class="controls">Highlight Random Player</button>
@@ -47,31 +51,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td>1</td><td>John Stockton</td><td>PG</td></tr>
-            <tr><td>2</td><td>*Chris Paul</td><td>PG</td></tr>
-            <tr><td>3</td><td>Jason Kidd</td><td>PG/SG</td></tr>
-            <tr><td>4</td><td>Michael Jordan</td><td>SG</td></tr>
-            <tr><td>5</td><td>Gary Payton</td><td>PG/SG</td></tr>
-            <tr><td>6</td><td>*LeBron James</td><td>PG/SG/SF/PF/C</td></tr>
-            <tr><td>7</td><td>Maurice Cheeks</td><td>PG</td></tr>
-            <tr><td>8</td><td>Scottie Pippen</td><td>SG/SF</td></tr>
-            <tr><td>9</td><td>Clyde Drexler</td><td>SG</td></tr>
-            <tr><td>10</td><td>Hakeem Olajuwon</td><td>C/PF</td></tr>
-            <tr><td>11</td><td>Alvin Robertson</td><td>SG/PG</td></tr>
-            <tr><td>12</td><td>Karl Malone</td><td>PF/C</td></tr>
-            <tr><td>13</td><td>Mookie Blaylock</td><td>PG</td></tr>
-            <tr><td>14</td><td>Allen Iverson</td><td>SG/PG</td></tr>
-            <tr><td>15</td><td>Derek Harper</td><td>PG</td></tr>
-            <tr><td>16</td><td>*Russell Westbrook</td><td>PG</td></tr>
-            <tr><td>17</td><td>Kobe Bryant</td><td>SG</td></tr>
-            <tr><td>18</td><td>Isiah Thomas</td><td>PG</td></tr>
-            <tr><td>19</td><td>Kevin Garnett</td><td>PF</td></tr>
-            <tr><td>20</td><td>Andre Iguodala</td><td>SG/SF/PF</td></tr>
-            <tr><td>21</td><td>Shawn Marion</td><td>SF/PF</td></tr>
-            <tr><td>22</td><td>Paul Pierce</td><td>SF</td></tr>
-            <tr><td>23</td><td>Magic Johnson</td><td>PG</td></tr>
-            <tr><td>24</td><td>Metta World Peace</td><td>PF/SF</td></tr>
-            <tr><td>25</td><td>Ron Harper</td><td>PG/SG</td></tr>
+            <tr class="hidden-row"><td>1</td><td>John Stockton</td><td>PG</td></tr>
+            <tr class="hidden-row"><td>2</td><td>*Chris Paul</td><td>PG</td></tr>
+            <tr class="hidden-row"><td>3</td><td>Jason Kidd</td><td>PG/SG</td></tr>
+            <tr class="hidden-row"><td>4</td><td>Michael Jordan</td><td>SG</td></tr>
+            <tr class="hidden-row"><td>5</td><td>Gary Payton</td><td>PG/SG</td></tr>
+            <tr class="hidden-row"><td>6</td><td>*LeBron James</td><td>PG/SG/SF/PF/C</td></tr>
+            <tr class="hidden-row"><td>7</td><td>Maurice Cheeks</td><td>PG</td></tr>
+            <tr class="hidden-row"><td>8</td><td>Scottie Pippen</td><td>SG/SF</td></tr>
+            <tr class="hidden-row"><td>9</td><td>Clyde Drexler</td><td>SG</td></tr>
+            <tr class="hidden-row"><td>10</td><td>Hakeem Olajuwon</td><td>C/PF</td></tr>
+            <tr class="hidden-row"><td>11</td><td>Alvin Robertson</td><td>SG/PG</td></tr>
+            <tr class="hidden-row"><td>12</td><td>Karl Malone</td><td>PF/C</td></tr>
+            <tr class="hidden-row"><td>13</td><td>Mookie Blaylock</td><td>PG</td></tr>
+            <tr class="hidden-row"><td>14</td><td>Allen Iverson</td><td>SG/PG</td></tr>
+            <tr class="hidden-row"><td>15</td><td>Derek Harper</td><td>PG</td></tr>
+            <tr class="hidden-row"><td>16</td><td>*Russell Westbrook</td><td>PG</td></tr>
+            <tr class="hidden-row"><td>17</td><td>Kobe Bryant</td><td>SG</td></tr>
+            <tr class="hidden-row"><td>18</td><td>Isiah Thomas</td><td>PG</td></tr>
+            <tr class="hidden-row"><td>19</td><td>Kevin Garnett</td><td>PF</td></tr>
+            <tr class="hidden-row"><td>20</td><td>Andre Iguodala</td><td>SG/SF/PF</td></tr>
+            <tr class="hidden-row"><td>21</td><td>Shawn Marion</td><td>SF/PF</td></tr>
+            <tr class="hidden-row"><td>22</td><td>Paul Pierce</td><td>SF</td></tr>
+            <tr class="hidden-row"><td>23</td><td>Magic Johnson</td><td>PG</td></tr>
+            <tr class="hidden-row"><td>24</td><td>Metta World Peace</td><td>PF/SF</td></tr>
+            <tr class="hidden-row"><td>25</td><td>Ron Harper</td><td>PG/SG</td></tr>
         </tbody>
     </table>
 
@@ -99,94 +103,65 @@
 </footer>
 
 <script>
-/* ========== SEARCH FILTER ========== */
-/* Elements and rows */
-const allRows = Array.from(document.querySelectorAll("#stat-table tbody tr"));
+const searchBar = document.getElementById("search-bar");
+const submitBtn = document.getElementById("submit-search");
+const showAllBtn = document.getElementById("show-all");
+const randomBtn = document.getElementById("random-player");
+const tableRows = [...document.querySelectorAll("#stat-table tbody tr")];
 
-/* Hide all rows on load */
-allRows.forEach(r => r.style.display = "none");
+let revealed = new Set();
 
-/* Set to track permanently revealed rows */
-const revealed = new Set();
-
-/* Utility: show or hide a single row (and ensure previous selected-row class persists) */
+/* Show/hide function */
 function setRowVisible(row, visible) {
-  row.style.display = visible ? "" : "none";
+  if (visible) row.classList.remove("hidden-row");
+  else row.classList.add("hidden-row");
 }
 
-/* Live preview while typing (temporary unless submitted) */
-document.getElementById("search-bar").addEventListener("input", function () {
-  const filter = this.value.toLowerCase();
+/* Temporary preview while typing */
+searchBar.addEventListener("keyup", () => {
+  const text = searchBar.value.toLowerCase();
 
-  allRows.forEach(row => {
+  tableRows.forEach(row => {
     const name = row.children[1].textContent.toLowerCase();
 
     if (revealed.has(row)) {
-      // permanently revealed rows stay visible
       setRowVisible(row, true);
-    } else {
-      // temporary preview only when filter is non-empty
-      setRowVisible(row, filter !== "" && name.includes(filter));
+      return;
     }
+
+    if (text && name.includes(text)) setRowVisible(row, true);
+    else setRowVisible(row, false);
   });
 });
 
-/* Submit to permanently reveal matched players */
-document.getElementById("submit-search").addEventListener("click", () => {
-  const filter = document.getElementById("search-bar").value.toLowerCase();
+/* SUBMIT permanently reveals */
+submitBtn.addEventListener("click", () => {
+  const text = searchBar.value.toLowerCase();
 
-  if (!filter) return; // nothing to submit
-
-  allRows.forEach(row => {
+  tableRows.forEach(row => {
     const name = row.children[1].textContent.toLowerCase();
-    if (name.includes(filter)) {
+    if (name.includes(text)) {
       revealed.add(row);
       setRowVisible(row, true);
     }
   });
-
-  // clear the search box after submit
-  document.getElementById("search-bar").value = "";
 });
 
-/* Show All Players (permanent) */
-document.getElementById("show-all").addEventListener("click", () => {
-  allRows.forEach(row => {
+/* SHOW ALL */
+showAllBtn.addEventListener("click", () => {
+  tableRows.forEach(row => {
     revealed.add(row);
     setRowVisible(row, true);
   });
 });
 
-/* Sorting (click headers) */
-document.querySelectorAll("#stat-table th").forEach(header => {
-  header.addEventListener("click", () => {
-    const colIndex = parseInt(header.getAttribute("data-col"), 10);
-    const tbody = document.querySelector("#stat-table tbody");
-    const rows = Array.from(tbody.querySelectorAll("tr"));
-
-    const sorted = rows.sort((a, b) => {
-      const A = a.children[colIndex].textContent.trim();
-      const B = b.children[colIndex].textContent.trim();
-      return A.localeCompare(B, undefined, { numeric: true });
-    });
-
-    // append in sorted order
-    tbody.innerHTML = "";
-    sorted.forEach(r => tbody.appendChild(r));
-  });
-});
-
-/* Random visible player highlight */
-document.getElementById("random-player").addEventListener("click", () => {
-  // remove previous selections
-  allRows.forEach(r => r.classList.remove("selected-row"));
-
-  // pick from currently visible rows
-  const visible = allRows.filter(r => r.style.display !== "none");
-  if (visible.length === 0) return;
-  const pick = visible[Math.floor(Math.random() * visible.length)];
-  pick.classList.add("selected-row");
-  pick.scrollIntoView({ behavior: "smooth", block: "center" });
+/* Random highlight */
+randomBtn.addEventListener("click", () => {
+  tableRows.forEach(r => r.classList.remove("selected-row"));
+  const visibleRows = tableRows.filter(r => !r.classList.contains("hidden-row"));
+  if (visibleRows.length === 0) return;
+  const random = visibleRows[Math.floor(Math.random() * visibleRows.length)];
+  random.classList.add("selected-row");
 });
 
 /* ========== FUN FACT ROTATION ========== */
