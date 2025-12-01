@@ -23,6 +23,7 @@ const statLinks = [
   { name: "Career Blocks Leaders", url: "blkstat.html" }
 ];
 
+// Picks one random stat category
 statBtn.addEventListener("click", () => {
   const random = statLinks[Math.floor(Math.random() * statLinks.length)];
 
